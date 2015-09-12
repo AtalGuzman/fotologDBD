@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @calificacion.usuario %>
+</p>
+
+<p>
+  <strong>Foto:</strong>
+  <%= @calificacion.foto %>
+</p>
+
+<p>
+  <strong>Nota:</strong>
+  <%= @calificacion.nota %>
+</p>
+
+<%= link_to 'Edit', edit_calificacion_path(@calificacion) %> |
+<%= link_to 'Back', calificacions_path %>

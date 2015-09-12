@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<%if current_administrador!= nil%>
+<h1>Listing Amigos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Amigo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @amigos.each do |amigo| %>
+      <tr>
+        <td><%= amigo.usuario.NOMBRE_PHOTOLOG %></td>
+        <td><%= amigo.amigo.NOMBRE_PHOTOLOG %></td>
+        <td><%= link_to 'Show', amigo %></td>
+        <td><%= link_to 'Edit', edit_amigo_path(amigo) %></td>
+        <td><%= link_to 'Destroy', amigo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%else%>
+  <h1>Es peligroso estar aquí estar aquí D:</h1>
+  <div class="field">
+    <img src="<%= asset_path( 'gato.jpg') %>">
+  </div>
+  <%=link_to "Aquí hay un lugar seguro y cálido", root_path%>
+<%end%>

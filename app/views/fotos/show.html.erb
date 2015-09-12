@@ -1,0 +1,54 @@
+<div id="main-container" class="container">
+  <div class="row">
+    <h3><em><p class="text-center"><%= @foto.TITULO %></p></em></h3><hr>
+    <em><h5><p class="text-center"><%= @foto.DESCRIPCION %></p></h5></em>
+    <p class="text-center"><%= image_tag @foto.imagen.url(),height: '480', width: '640', class:"img-thumbnail" %></p>
+    <%if current_usuario !=nil%>
+          <%if current_usuario.id == @foto.usuario_id%>
+            <p class="text-center"><%= link_to 'Editar foto', edit_foto_path(@foto) %></p>
+          <%end%>
+          <p class="text-center"><%= link_to 'Volver', "/usuarios/#{current_usuario.id}" %></p><br>
+        <h4>Califación</h4>
+        <%= @foto.calificacions.average(:nota)%>
+            <% if not current_usuario.calificacions.exists?(foto_id: @foto.id)%>
+                <%if current_usuario.amigos.exists?(amigo_id: @foto.usuario.id)%>
+                    <%= render "calificacions/form"%>
+                <%else%>
+                    <h5>Deben ser amigos para calificar.</h5>
+                <%end%>
+            <%else%>
+                    <h5> Calificaste a esta foto con: <%= current_usuario.calificacions.where(foto_id: @foto.id).last.nota%></h5>
+
+            <%end%>
+                </div>
+                    <h3><p class="text-center">Comentarios:</p></h3>
+                    <ul>
+                    <% @foto.comentarios.each do |c|%>
+                    <h4><u><b><%= c.usuario.NOMBRE_PHOTOLOG %></b></u>   dice:</h4>
+                    <h5><%= c.TEXTO %></h5>
+                    <h6><%= c.FECHA%>
+                        <%if c.usuario.id == current_usuario.id%>
+                        <%= link_to "Eliminar","/fotos/#{@foto.id}/comentarios/#{c.id}",method: :delete%></h6>
+                        <%end%>
+                    <%end%>
+                    <%= render "comentarios/form"%>
+                    </ul>
+                </div>
+            </div>
+    <%else%>
+        <p class="text-center"><h3>Comentarios:</h3></p>
+                    <ul>
+                    <% @foto.comentarios.each do |c|%>
+                    <h4><%= c.usuario.NOMBRE_PHOTOLOG %> dice:</h4>
+                    <h5><%= c.TEXTO %></h5>
+                    <h6><%= c.FECHA%></h6>
+                    <%end%>
+                      </ul>
+    <%= render "comentarios/form"%>
+    <%end%>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+</div>

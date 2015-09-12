@@ -1,0 +1,25 @@
+<%= form_for(@amigo) do |f| %>
+  <% if @amigo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@amigo.errors.count, "error") %> prohibited this amigo from being saved:</h2>
+
+      <ul>
+      <% @amigo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :usuario_id %><br>
+    <%= f.number_field :usuario_id %>
+  </div>
+  <div class="field">
+    <%= f.label :amigo_id %><br>
+    <%= f.number_field :amigo_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

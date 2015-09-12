@@ -1,0 +1,31 @@
+<!--<p id="notice"><%= notice %></p>-->
+<div class="field orange cente-md">
+	<div class = "center-md">	
+		<h2 class ="col-xs" style=”text-align: justify;” > <%= current_usuario.NOMBRE_PHOTOLOG.capitalize %></h2>
+		<%= link_to "Subir foto", new_foto_path%>	
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th> </th>
+				<th> </th>
+			</tr>
+		</thead>
+	</table>
+	<tbody >
+    <%fotos = current_usuario.fotos%>
+	<%fotos.each do |f|%>
+      <tr>
+      	<div class="field">
+			<td><%= image_tag f.imagen.url(:medium)%></td>	
+	        <td><%= link_to 'Ver', f %></td>
+	        <td><%= link_to 'Editar', "/fotos/#{f.id}/edit"%>
+	        <td><%=link_to "Eliminar", f, method: :delete%></td>
+	    </div>
+      </tr>
+    <% end %>
+  </tbody>
+	<div class = "col-md">
+	</div>
+</div>
+

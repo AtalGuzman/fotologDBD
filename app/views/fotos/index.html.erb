@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<%if current_administrador!= nil%>
+  <h1>Listing Fotos</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Descripcion</th>
+        <th>Fecha</th>
+        <th>Titulo</th>
+        <th>Imagen</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @foto.each do |foto| %>
+        <tr>
+          <td><%= foto.DESCRIPCION %></td>
+          <td><%= foto.FECHA %></td>
+          <td><%= foto.TITULO %></td>
+          <td><%= image_tag foto.imagen.url(:mini)%></td>
+          <td><%= link_to 'Show', foto %></td>
+          <td><%= link_to 'Edit', edit_foto_path(foto) %></td>
+          <td><%= link_to 'Destroy', foto, method: :delete, data: { confirm: '¿Realmente desea eliminar esta foto?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+<%else%>
+  <h1>Es peligroso estar aquí estar aquí D:</h1>
+  <div class="field">
+    <img src="<%= asset_path( 'gato.jpg') %>">
+  </div>
+  <%=link_to "Aquí hay un lugar seguro y cálido", root_path%>
+<%end%>

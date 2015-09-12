@@ -1,0 +1,22 @@
+<%= form_for([@foto,@calificacion]) do |f| %>
+  <% if @calificacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@calificacion.errors.count, "error") %> prohibited this calificacion from being saved:</h2>
+
+      <ul>
+        <% @calificacion.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+      Mala  
+        <%for i in 1..5%>
+        <%= radio_button_tag "calificacion[nota]", i%> 
+      <%end%>
+      Hermosa
+  </div>
+  <%= f.submit "Listo"%>
+<% end %>
+

@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fotos</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Descripcion</th>
+      <th>Dueño</th>
+      <th>Fecha</th>
+      <th>Titulo</th>
+      <th>Imagen</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foto_anonimo.each do |foto| %>
+      <tr>
+        <td><%= foto.DESCRIPCION %></td>
+        <td><%= foto.usuario.NOMBRE_PHOTOLOG%></td>
+        <td><%= foto.FECHA %></td>
+        <td><%= foto.TITULO %></td>
+        <td><%= image_tag foto.imagen.url(:mini)%></td>
+        <td><%= link_to 'Show', foto %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

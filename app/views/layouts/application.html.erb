@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>INFOLOG</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic' rel='stylesheet' type='text/scss'>  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <style>
+      body {background: rgba(0,0,0,1);
+          background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 7%, rgba(1,1,132,1) 100%);
+          background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,1)), color-stop(7%, rgba(0,0,0,1)), color-stop(100%, rgba(1,1,132,1)));
+          background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 7%, rgba(1,1,132,1) 100%);
+          background: -o-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 7%, rgba(1,1,132,1) 100%);
+          background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 7%, rgba(1,1,132,1) 100%);
+          background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 7%, rgba(1,1,132,1) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#010184', GradientType=1 );
+          link:"#FF8000" vlink:"#B43104" alink:"#FF4000";
+      }
+  </style>
+</head>
+<body>
+<font color=#F2F2F2 face="Lucida Sans Unicode">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <span class=" glyphicon glyphicon-italic"> INFOLOG</span></a>
+    </div>
+          <%= form_tag("/usuario", class: "navbar-form navbar-left",role:"search", :method => "get", ŃOMBRE_PHOTOLOG: "search-form") do |f|%>
+              <div class="form-group">
+                <%=text_field_tag :search, params[:search], placeholder: "Buscar amigos", type: "text", class: "form-control"%>
+                <button type="submit" class="btn btn-default">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </div>
+          <% end %>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if usuario_signed_in? %>
+            <% id = current_usuario.id%>
+            <li class = "col-md no-point">
+              <%= link_to "YO!", "/usuarios/#{id}"%>
+            </li>
+            <li class = "col-md no-point">
+              <% if current_usuario.fotos.last != nil%>
+                  <%= link_to "Mis fotos", "/usuarios/#{id}/fotos"%>
+              <% else %>
+                  Sube tus fotos <!-- esto es mientras no implementa se una funcionalidad para agregar amigos-->
+              <%end%>
+            </li>
+
+            <li class = "col-md no-point">
+              <% if current_usuario.amigos.last != nil%>
+                  <%= link_to "Mis amigos", "/usuarios/#{id}/amigos"%>
+              <%end%>
+            </li>
+            <li class = "col-md no-point">
+              <%= link_to "Cerrar sesión", destroy_usuario_session_path, method: :delete%>
+            </li>
+        <%else%>
+            <li class = "col-me no-point">
+              <%=link_to "Explora como anónimo","/anonimo"%>
+            </li>
+            <li class = "col-md no-point">
+              <%= link_to "Inicia sesión", new_usuario_session_path%>
+            </li>
+            <li class = "col-md no-point">
+              <%= link_to "Registrate", new_usuario_registration_path%>
+            </li>
+        <%end%>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="navbar navbar-fixed-bottom navbar-inverse">
+  <h5><p class="text-center"><font color=#6E6E6E>INFOLOG es desarrollado por: Fernanda Estay - Adolfo Guzmán - Franz Farbinger</font></p></h5>
+</div>
+<!--<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>-->
+<%= yield %>
+</font>
+</body>
+</html>

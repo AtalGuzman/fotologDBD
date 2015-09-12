@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<%if @usuarios !=nil%>
+    <div id="main-container" class="container">
+      <div class="row">
+        <h1><em><p class="text-center">Resultados de la búsqueda</p></em></h1><hr>
+        </div>
+      </div>
+
+<% @usuarios.each do |u| %>
+        <div id="main-container" class="container">
+          <div class="row-md-6">
+              <%if u.id != 1%>
+                  <div class="col-md-3">
+            <%if u.fotos.last != nil%>
+                <%= image_tag u.fotos.last.imagen.url(),height: '130', width: '130'%>
+            <%else%>
+                <img src="<%= asset_path( 'photodefault.jpg') %>"  height='130' width='130'>
+            <%end%>
+          </div>
+                <div class="col-md-3">
+                  <ul>
+             <h3><b><u><%= u.NOMBRE_PHOTOLOG %></u></b></h3>
+              <h4><i><%= u.NOMBRE_US%>
+                <%= u.APELLIDO_US%></i></h4>
+              <%= link_to 'Visitar', u, class:"btn btn-default" %>
+                      </ul>
+            </div>
+                </div>
+                </div><br><br>
+    <%end%>
+<% end %>
+<%else%>
+    <h1><em><p class="text-center">No hay resultados de la búsqueda</p></em></h1><hr>
+<%end%>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

@@ -1,0 +1,20 @@
+<!--<p id="notice"><%= notice %></p>-->
+<div class="field orange">
+	<div class = "center-md">
+		<h2 class ="col-xs" style=”text-align: justify;” > <%= current_usuario.NOMBRE_PHOTOLOG %></h2>
+		<h4 class ="col-xs" style=”text-align: justify;”  > ultimo amigo: <%= current_usuario.amigos.last.amigo.NOMBRE_PHOTOLOG %></h4>
+	</div>
+	<div class = "col-md">
+		<%mis_amigos = current_usuario.amigos%>
+		<%mis_amigos.each do |a|%>
+		<div class="field">
+				<h3><%= link_to a.amigo.NOMBRE_PHOTOLOG, "/amigos/#{a.id}"%></h3>
+				<%if a.amigo.fotos.last !=nil%>
+					<%=image_tag a.amigo.fotos.last.imagen.url(:mini)%>
+				<%end%>
+		</div>
+		<%end%>
+	</div>
+</div>
+
+<%= link_to 'Volver', root_path %>

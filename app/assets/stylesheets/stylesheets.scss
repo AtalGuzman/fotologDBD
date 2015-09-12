@@ -1,0 +1,99 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+html,body{
+	margin: 0px;
+	font-family: 'Roboto', sans-serif;
+	background-color: white;
+}
+
+a,a:visited{
+	color: inherit;
+}
+
+#Descripcion{
+	widh: 50%;
+	height: 25%;
+}
+
+a:link   
+{   
+ text-decoration:none;   
+}  
+
+a:hover{
+  color: trasparent important;
+  background: none;
+}
+
+#logo{
+	font-size: 1.5em;
+}
+
+.no-margin{
+	margin: 0px;
+}
+
+.be-orange{
+	background-color: #FFA600;
+}
+
+.be-magenta{
+	background-color: #E80047;
+}
+
+.be-blue{
+	background-color: #1D00FF;
+}
+
+.be-green{
+	background-color: #7DE800;
+}
+
+.be-bluesky{
+	background-color: #00D1FF
+}
+
+.large-padding{
+	padding: 1% 7%;
+}
+
+.white{
+	color: white;
+}
+
+
+.orange{
+	color:  #FF7700;
+}
+
+.no-point{
+	display: block;
+}
+
+.ec-stars-wrapper {
+  /* Espacio entre los inline-block (los hijos, los `a`) */
+    font-size: 0;
+    /* Podríamos quitarlo, pero de esta manera (siempre que no le demos padding), sólo aplicará la regla .ec-stars-wrapper:hover a cuando también se esté haciendo hover a alguna estrella */
+    display: inline-block;
+
+    a {
+      display: inline-block;
+      /* Volver a dar tamaño al texto */
+      font-size: 2rem;
+    
+      color: #888;
+      text-shadow: 0 0 0 rgba(0,0,0,10);
+    }
+
+    &:hover a {
+      color: rgb(39, 130, 228);
+      text-decoration: none;
+      text-shadow: .1em .1em .2em rgba(0,0,0,3em);
+    }
+    /*
+     * El selector de hijo, es necesario para aumentar la especifidad
+     */
+    & > a:hover ~ a {
+      color: transparent;
+    }
+}

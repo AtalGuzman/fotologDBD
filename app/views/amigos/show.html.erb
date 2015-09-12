@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%=@amigo.amigo.NOMBRE_PHOTOLOG%></h1>
+<h3><%=link_to "Eliminar amigo", "/usuario/#{current_usuario.id}/amigos/#{@amigo.id}", method: :delete%></h3>
+<div class = "col-md">
+	<%amigo = @amigo.amigo%>
+	<%if amigo.fotos.last!=nil%>
+		<%amigo.fotos.each do |f|%>
+			<div class="field">	
+				<%= link_to "Ver", f %>
+				<%= image_tag f.imagen.url(:medium)%>
+			</div>
+		<%end%>
+	<%else%>
+		Tu amigo no ha subido fotos
+	<%end%>
+</div>
+
+<%= link_to 'Volver', "/usuarios/#{current_usuario.id}" %>
+

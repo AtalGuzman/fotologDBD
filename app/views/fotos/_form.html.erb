@@ -1,0 +1,31 @@
+<%= form_for(@foto,class:"input-group") do |f| %>
+  <% if @foto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@foto.errors.count, "error") %> prohibited this foto from being saved:</h2>
+
+      <ul>
+      <% @foto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :'sube tu foto' %> <br>
+    <%= f.file_field :imagen%><br>
+  </div>
+  
+  <div class="field">
+    <%= f.label :DESCRIPCION%><br>
+    <%= f.text_field :DESCRIPCION, class:"form-control", placeholder:"Escribe la historia de tu foto"%><br>
+  </div>
+  <div class="field">
+    <%= f.label :TITULO %><br>
+    <%= f.text_field :TITULO, class:"form-control", placeholder:"¿Cual es el título de tu foto?"%><br>
+  </div><br>
+  <div class="actions">
+    <%= f.submit "Subir foto", class:"btn btn-default" %>
+  </div>
+
+
+<% end %>
