@@ -30,15 +30,6 @@ class UsuarioController < ApplicationController
     redirect_to :back
   end
 
-  def noGold
-    @usuario = Usuario.find(params[:id])
-    if Date.current.mon != @usuario.fechaGold.mon || Date.current.year != @usuario.fechaGold.year
-      @usuario.GOLD = false      
-    end
-    @usuario.save
-    redirect_to :back
-  end
-
   def mis_amigos
     @mis_amigo = @usuario.amigos
   end

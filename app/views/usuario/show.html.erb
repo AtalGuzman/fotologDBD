@@ -1,5 +1,5 @@
 <p id="notice" style = "color: white;"><%= notice %></p>
-<div style="color:white;">
+<div class= "container"style="color:white;">
 	<div class = "center-md">
 		<h2 class ="col-xs" style=”text-align: justify;” > <%= @usuario.NOMBRE_PHOTOLOG %></h2>
 		<%if current_usuario != nil%>
@@ -12,34 +12,44 @@
 			<%end%>
 		<%end%>
 	</div>
-	<div class = "col-md">
-		<%fotos = @usuario.fotos%>
-		<%fotos.each do |f|%>
-		<div class="field">
-			<h1><%= link_to f.TITULO, f%></h1>
-			<%=image_tag f.imagen.url(:medium)%>
-			<%end%>
-		</div>
-	</div>
-	<h1>Amigos</h1>
-	<div class = "col-md">
-		<% if @usuario.amigos.last !=nil%>
-			<%amigos = @usuario.amigos%>
-			<%amigos.each do |a|%>
-			<div class="field">
-				<h3><%= a.amigo.NOMBRE_PHOTOLOG%></h3>
-				<%if a.amigo.fotos.last !=nil%>
-				<div>
-					<%=a.amigo.fotos.last.FECHA%>
-				</div>
-					<%=image_tag a.amigo.fotos.last.imagen.url(:mini)%>
-				<%end%>
-				<%end%>
-			</div>
-		<%else%>
-			No tienes amigos
-		<%end%>
-	</div>
 </div>
 
+<div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                	<%fotos = @usuario.fotos%>
+					<%fotos.each do |f|%>
+						<h1><%= link_to f.TITULO, f%></h1>
+						<%=image_tag f.imagen.url(:medium)%>
+					<%end%>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+           
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            	<h1>Amigos</h1>
+                <% if @usuario.amigos.last !=nil%>
+					<%amigos = @usuario.amigos%>
+					<%amigos.each do |a|%>
+				<div class="field">
+					<h3><%= a.amigo.NOMBRE_PHOTOLOG%></h3>
+					<%if a.amigo.fotos.last !=nil%>
+					<div>
+						<%=a.amigo.fotos.last.FECHA%>
+					</div>
+						<%=image_tag a.amigo.fotos.last.imagen.url(:mini)%>
+					<%end%>
+					<%end%>
+				</div>
+				<%else%>
+					No tienes amigos
+				<%end%>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            </div>
+        </div>
+    </div>
 <%= link_to 'Volver', root_path %>
