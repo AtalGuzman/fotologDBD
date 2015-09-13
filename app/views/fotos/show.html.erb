@@ -11,10 +11,14 @@
         <h4>Califación</h4>
         <%= @foto.calificacions.average(:nota)%>
             <% if not current_usuario.calificacions.exists?(foto_id: @foto.id)%>
-                <%if current_usuario.amigos.exists?(amigo_id: @foto.usuario.id)%>
-                    <%= render "calificacions/form"%>
-                <%else%>
-                    <h5>Deben ser amigos para calificar.</h5>
+                <%if current_usuario.id==@foto.usuario_id%>  
+                    No puedes calificar tus fotos! e.e
+                <%else%>  
+                    <%if current_usuario.amigos.exists?(amigo_id: @foto.usuario.id)%>
+                        <%= render "calificacions/form"%>
+                    <%else%>
+                        <h5>Deben ser amigos para calificar.</h5>
+                    <%end%>
                 <%end%>
             <%else%>
                     <h5> Calificaste a esta foto con: <%= current_usuario.calificacions.where(foto_id: @foto.id).last.nota%></h5>

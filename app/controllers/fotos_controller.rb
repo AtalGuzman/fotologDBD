@@ -27,8 +27,8 @@ class FotosController < ApplicationController
   # POST /fotos
   # POST /fotos.json
   def create
-    if current_usuario.fotos.where(FECHA: Date.current).count <= 5
-      if foto_params[:DESCRIPCION].length <200 && foto_params[:TITULO].length<50
+    if current_usuario.fotos.where(FECHA: Date.current).count == 0
+      if foto_params[:DESCRIPCION].length <2000 && foto_params[:TITULO].length<50
         @foto = current_usuario.fotos.new(foto_params)
         @foto.FECHA = Date.current
       
@@ -47,7 +47,7 @@ class FotosController < ApplicationController
       end
     else
       redirect_to current_usuario
-      flash[:notice] = "No puedes subir más de 5 fotos en un día."
+      flash[:notice] = "No puedes subir más de 1 fotos en un día. Hazte gold hoy!" 
     end
   end
 
