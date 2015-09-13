@@ -25,6 +25,7 @@ class UsuarioController < ApplicationController
   def gold  
     @usuario = Usuario.find(params[:id])
     @usuario.GOLD = true
+    @usuario.fechaGold = current_date
     @usuario.save
     redirect_to :back
   end

@@ -27,7 +27,11 @@
                     <h3><p class="text-center">Comentarios:</p></h3>
                     <ul>
                     <% @foto.comentarios.each do |c|%>
-                    <h4><u><b><%= c.usuario.NOMBRE_PHOTOLOG %></b></u>   dice:</h4>
+                    <h4><u><b><%= c.usuario.NOMBRE_PHOTOLOG %></b></u>   
+                        <%if c.usuario.GOLD%>
+                            &#9733;
+                        <%end%>
+                        dice:</h4>
                     <h5><%= c.TEXTO %></h5>
                     <h6><%= c.FECHA%>
                         <%if c.usuario.id == current_usuario.id%>

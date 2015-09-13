@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705161107) do
+ActiveRecord::Schema.define(version: 20150913041841) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20150705161107) do
     t.boolean  "GOLD",                   limit: 1,   default: false
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
+    t.date     "fechaGold"
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree

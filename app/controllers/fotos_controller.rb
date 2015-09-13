@@ -27,12 +27,24 @@ class FotosController < ApplicationController
   # POST /fotos
   # POST /fotos.json
   def create
-    if current_usuario.fotos.where(FECHA: Date.current).count == 0
-      if foto_params[:DESCRIPCION].length <2000 && foto_params[:TITULO].length<50
+    if current_usuario.GOLD
+      aux_create
+    elsif not current_usuario.GOLD 
+      if current_usuario.fotos.where(FECHA: Date.current).count <= 0 
+        aux_create
+      else 
+        redirect_to current_usuario
+        flash[:notice] = "No puedes subir más de una foto al día. Hazte gold!"
+      end
+    end
+  end
+
+  def aux_create
+    if foto_params[:DESCRIPCION].length <2000 && foto_params[:TITULO].length<50
         @foto = current_usuario.fotos.new(foto_params)
         @foto.FECHA = Date.current
       
-        respond_to do |format|
+        respond_to do   |format|
           if @foto.save
             format.html { redirect_to @foto, notice: 'Foto creada.' }
             format.json { render :show, status: :created, location: @foto }
@@ -41,13 +53,9 @@ class FotosController < ApplicationController
             format.json { render json: @foto.errors, status: :unprocessable_entity }
           end
         end 
-      else
+    else
         redirect_to current_usuario
         flash[:notice] = "La descripcion no puede tener más de 200 caracteres y el titulo no más de 50."
-      end
-    else
-      redirect_to current_usuario
-      flash[:notice] = "No puedes subir más de 1 fotos en un día. Hazte gold hoy!" 
     end
   end
 
