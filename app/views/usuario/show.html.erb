@@ -43,7 +43,7 @@
 						<div>
 							<%=a.amigo.fotos.last.FECHA%>
 						</div>
-							<%=image_tag a.amigo.fotos.last.imagen.url(:mini)%>
+							<%=link_to image_tag(a.amigo.fotos.last.imagen.url(:mini)), a%>
 						<%end%>
 						<%end%>
 					</div>

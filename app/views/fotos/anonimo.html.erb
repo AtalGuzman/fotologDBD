@@ -6,7 +6,9 @@
     <tr>
       <th>Descripcion</th>
       <th>Dueño</th>
+      <th> </th>
       <th>Fecha</th>
+      <th> </th>
       <th>Titulo</th>
       <th>Imagen</th>
       <th colspan="3"></th>
@@ -17,12 +19,14 @@
     <% @foto_anonimo.each do |foto| %>
       <tr>
         <td><%= foto.DESCRIPCION %></td>
+        <td> </td>
         <td><%= foto.usuario.NOMBRE_PHOTOLOG%></td>
+        <td> </td>
         <td><%= foto.FECHA %></td>
-        <td><%= foto.TITULO %></td>
-        <td><%= image_tag foto.imagen.url(:mini)%></td>
-        <td><%= link_to 'Show', foto %></td>
+        <td> </td>
+        <td><%= link_to image_tag(foto.imagen.url(:mini)), foto%></td>
       </tr>
+      <tr> </tr>
     <% end %>
   </tbody>
 </table>
