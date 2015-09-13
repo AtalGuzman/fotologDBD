@@ -48,6 +48,8 @@
             <li class = "col-md no-point">
               <%if not current_usuario.GOLD%>
                 <%=link_to "GOLD", "/usuarios/#{id}/gold"%>
+              <%else%>
+                <%noGold%>
               <%end%>
             </li>
             <li class = "col-md no-point">
