@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913012856) do
+ActiveRecord::Schema.define(version: 20150705161107) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -78,28 +78,27 @@ ActiveRecord::Schema.define(version: 20150913012856) do
   add_index "comentarios", ["usuario_id"], name: "index_comentarios_on_usuario_id", using: :btree
 
   create_table "fotos", force: :cascade do |t|
-    t.string   "DESCRIPCION",          limit: 255
+    t.string   "DESCRIPCION",         limit: 255
     t.date     "FECHA"
-    t.string   "TITULO",               limit: 255
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.string   "imagen_file_name",     limit: 255
-    t.string   "imagen_content_type",  limit: 255
-    t.integer  "imagen_file_size",     limit: 4
+    t.string   "TITULO",              limit: 255
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "imagen_file_name",    limit: 255
+    t.string   "imagen_content_type", limit: 255
+    t.integer  "imagen_file_size",    limit: 4
     t.datetime "imagen_updated_at"
-    t.integer  "usuario_id",           limit: 4
-    t.float    "calificacionPromedio", limit: 24
+    t.integer  "usuario_id",          limit: 4
   end
 
   add_index "fotos", ["usuario_id"], name: "index_fotos_on_usuario_id", using: :btree
 
   create_table "usuarios", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -107,9 +106,9 @@ ActiveRecord::Schema.define(version: 20150913012856) do
     t.string   "NOMBRE_PHOTOLOG",        limit: 255
     t.string   "NOMBRE_US",              limit: 255
     t.string   "APELLIDO_US",            limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.boolean  "GOLD",                   limit: 1
+    t.boolean  "GOLD",                   limit: 1,   default: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree

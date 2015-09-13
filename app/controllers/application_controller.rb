@@ -10,5 +10,6 @@ class ApplicationController < ActionController::Base
     	devise_parameter_sanitizer.for(:sign_up) << :NOMBRE_US
    	devise_parameter_sanitizer.for(:sign_up) << :APELLIDO_US
 	devise_parameter_sanitizer.for(:sign_up) << :NOMBRE_PHOTOLOG	
+  devise_parameter_sanitizer.for(:sign_up) << :GOLD
   end
 end
