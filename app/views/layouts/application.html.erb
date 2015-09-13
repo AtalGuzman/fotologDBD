@@ -46,6 +46,11 @@
         <% if usuario_signed_in? %>
             <% id = current_usuario.id%>
             <li class = "col-md no-point">
+              <%if not current_usuario.GOLD%>
+                <%=link_to "GOLD", "/usuarios/#{id}/gold"%>
+              <%end%>
+            </li>
+            <li class = "col-md no-point">
               <%= link_to "YO!", "/usuarios/#{id}"%>
             </li>
             <li class = "col-md no-point">
@@ -55,7 +60,6 @@
                   Sube tus fotos <!-- esto es mientras no implementa se una funcionalidad para agregar amigos-->
               <%end%>
             </li>
-
             <li class = "col-md no-point">
               <% if current_usuario.amigos.last != nil%>
                   <%= link_to "Mis amigos", "/usuarios/#{id}/amigos"%>

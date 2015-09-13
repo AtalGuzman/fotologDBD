@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get "/usuarios/:id/amigos", to: 'usuario#mis_amigos'
   get "/usuarios/:id/fotos", to: 'usuario#mis_fotos'
   get "/anonimo", to: 'fotos#anonimo'
-
+  get '/usuarios/:id/gold', to: 'usuario#gold'
   root 'welcome#index'
 
 end

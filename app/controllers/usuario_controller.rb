@@ -22,6 +22,12 @@ class UsuarioController < ApplicationController
     end
   end
 
+  def gold  
+    @usuario = Usuario.find(params[:id])
+    @usuario.GOLD = true
+    @usuario.save
+    redirect_to :back
+  end
 
   def mis_amigos
     @mis_amigo = @usuario.amigos
