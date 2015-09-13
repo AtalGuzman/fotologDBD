@@ -22,7 +22,6 @@
                 <%end%>
             <%else%>
                     <h5> Calificaste a esta foto con: <%= current_usuario.calificacions.where(foto_id: @foto.id).last.nota%></h5>
-
             <%end%>
                 </div>
                     <h3><p class="text-center">Comentarios:</p></h3>

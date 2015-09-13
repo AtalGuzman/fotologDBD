@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705161107) do
+ActiveRecord::Schema.define(version: 20150913012856) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -78,16 +78,17 @@ ActiveRecord::Schema.define(version: 20150705161107) do
   add_index "comentarios", ["usuario_id"], name: "index_comentarios_on_usuario_id", using: :btree
 
   create_table "fotos", force: :cascade do |t|
-    t.string   "DESCRIPCION",         limit: 255
+    t.string   "DESCRIPCION",          limit: 255
     t.date     "FECHA"
-    t.string   "TITULO",              limit: 255
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.string   "imagen_file_name",    limit: 255
-    t.string   "imagen_content_type", limit: 255
-    t.integer  "imagen_file_size",    limit: 4
+    t.string   "TITULO",               limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "imagen_file_name",     limit: 255
+    t.string   "imagen_content_type",  limit: 255
+    t.integer  "imagen_file_size",     limit: 4
     t.datetime "imagen_updated_at"
-    t.integer  "usuario_id",          limit: 4
+    t.integer  "usuario_id",           limit: 4
+    t.float    "calificacionPromedio", limit: 24
   end
 
   add_index "fotos", ["usuario_id"], name: "index_fotos_on_usuario_id", using: :btree
@@ -108,6 +109,7 @@ ActiveRecord::Schema.define(version: 20150705161107) do
     t.string   "APELLIDO_US",            limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.boolean  "GOLD",                   limit: 1
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
