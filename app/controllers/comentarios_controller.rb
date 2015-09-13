@@ -10,15 +10,20 @@ class ComentariosController < ApplicationController
       @comentario.FECHA = Date.current
       if current_usuario.comentarios.where(foto_id: @foto.id).count < 20
         if @comentario.TEXTO.length < 1000
-          respond_to do |format|
-            if @comentario.save
-              format.html { redirect_to @comentario.foto, notice: 'El comentario fue creado.' }
-              format.json { render :show, status: :created, location: @comentario }
-            else
-              format.html { render :new }
-              format.json { render json: @comentario.errors, status: :unprocessable_entity }
+          if  @comentario.TEXTO.length == 0
+              flash[:notice] = "El comentario debe tener texto."
+              redirect_to @foto
+          else
+            respond_to do |format|
+              if @comentario.save
+                format.html { redirect_to @comentario.foto, notice: 'El comentario fue creado.' }
+                format.json { render :show, status: :created, location: @comentario }
+              else
+                format.html { render :new }
+                format.json { render json: @comentario.errors, status: :unprocessable_entity }
+              end
             end
-          end
+          end  
         else
               flash[:notice] = "El comentario no puede tener más de 200 caracteres."
               redirect_to @foto
