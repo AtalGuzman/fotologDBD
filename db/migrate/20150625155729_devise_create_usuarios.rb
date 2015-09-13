@@ -33,6 +33,7 @@ class DeviseCreateUsuarios < ActiveRecord::Migration
       t.string :NOMBRE_PHOTOLOG
       t.string :NOMBRE_US
       t.string :APELLIDO_US
+      t.boolean :GOLD
 
       t.timestamps null: false
     end
