@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>INFOLOG</title>
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic' rel='stylesheet' type='text/scss'>  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic' rel='stylesheet' type='text/scss'>  <%= stylesheet_link_tag    'footer','application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <style>
@@ -21,7 +21,7 @@
 <body>
 <font color=#F2F2F2 face="Lucida Sans Unicode">
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+  <div class="container-fluid wrapper">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -91,13 +91,15 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<section><%= yield %></section>
 
-<div class="navbar navbar-fixed-bottom navbar-inverse">
-  <h5><p class="text-center"><font color=#6E6E6E>INFOLOG es desarrollado por: Fernanda Estay - Adolfo Guzmán - Franz Farbinger</font></p></h5>
+<div class="col-xs-12">
+  <footer class = "footer row">
+    <p class="text-center"><font color=#6E6E6E>INFOLOG es desarrollado por: Fernanda Estay - Adolfo Guzmán - Franz   Farbinger</font></p>
+  </footer>
 </div>
 <!--<p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>-->
-<%= yield %>
 </font>
 </body>
 </html>
