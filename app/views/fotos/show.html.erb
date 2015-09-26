@@ -46,11 +46,15 @@
         <p class="text-center"><h3>Comentarios:</h3></p>
                     <ul>
                     <% @foto.comentarios.each do |c|%>
-                    <h4><%= c.usuario.NOMBRE_PHOTOLOG %> dice:</h4>
+                    <h4><u><b><%= c.usuario.NOMBRE_PHOTOLOG %></b></u>   
+                        <%if c.usuario.GOLD%>
+                            &#9733;
+                        <%end%>
+                        dice:</h4>
                     <h5><%= c.TEXTO %></h5>
                     <h6><%= c.FECHA%></h6>
                     <%end%>
-                      </ul>
+                    </ul>
     <%= render "comentarios/form"%>
     <%end%>
   <br>

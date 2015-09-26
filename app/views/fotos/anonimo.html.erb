@@ -17,6 +17,7 @@
 
   <tbody>
     <% @foto_anonimo.each do |foto| %>
+      <td>-----</td>
       <tr>
         <td><%= foto.DESCRIPCION %></td>
         <td> </td>
@@ -26,7 +27,6 @@
         <td> </td>
         <td><%= link_to image_tag(foto.imagen.url(:mini)), foto%></td>
       </tr>
-      <tr> </tr>
     <% end %>
   </tbody>
 </table>
