@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20150913041841) do
     t.string   "NOMBRE_PHOTOLOG",        limit: 255
     t.string   "NOMBRE_US",              limit: 255
     t.string   "APELLIDO_US",            limit: 255
-    t.boolean  "GOLD",                   limit: 1,   default: false
+    t.boolean  "GOLD",                   limit: 1,   default: false, null: false
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.date     "fechaGold"
