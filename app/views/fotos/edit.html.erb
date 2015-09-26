@@ -1,6 +1,14 @@
-<h1>Editar foto</h1>
+<div id="main-container" class="container">
+  <div class="row">
+    <h1><em><p class="text-center">Editar foto</p></em></h1><hr>
+  </div>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @foto %> |
-<%= link_to 'Back', current_usuario %>
+<div class = "center-md col-md-offset-4">
+  <div class = "col-lg-6 center-md be-blue white">
+    <%= render 'form' %>
+    <br>
+    <%= link_to 'Show', @foto %> |
+	<%= link_to 'Back', current_usuario %>
+  </div>
+</div>
