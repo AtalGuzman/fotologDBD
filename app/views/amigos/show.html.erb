@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%=@amigo.amigo.NOMBRE_PHOTOLOG%></h1>
-<h3><%=link_to "Eliminar amigo", "/usuario/#{current_usuario.id}/amigos/#{@amigo.id}", method: :delete%></h3>
+<%if current_usuario !=nil%>
+	<h3><%=link_to "Eliminar amigo", "/usuario/#{current_usuario.id}/amigos/#{@amigo.id}", method: :delete%></h3>
+<%end%>
 <div class = "col-md">
 	<%amigo = @amigo.amigo%>
 	<%if amigo.fotos.last!=nil%>
@@ -16,5 +18,9 @@
 	<%end%>
 </div>
 
-<%= link_to 'Volver', "/usuarios/#{current_usuario.id}" %>
+<%if current_usuario ==nil%>
+	<%= link_to 'Volver', root_path %>	
+<%else%>	
+	<%= link_to 'Volver', "/usuarios/#{current_usuario.id}" %>
+<%end%>
 
