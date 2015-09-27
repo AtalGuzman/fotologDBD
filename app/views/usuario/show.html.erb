@@ -31,29 +31,46 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             	<h1>Amigos</h1>
-	            <%if current_usuario.id != @usuario.id%>
-	            	No tiene amigos
-	            <%else%>	
-	                <% if @usuario.amigos.last !=nil%>
-						<%amigos = @usuario.amigos%>
-						<%amigos.each do |a|%>
-					<div class="field">
-						<h3><%= a.amigo.NOMBRE_PHOTOLOG%></h3>
-						<%if a.amigo.fotos.last !=nil%>
-						<div>
-							<%=a.amigo.fotos.last.FECHA%>
+            	<%if current_usuario!=nil%>
+		            <%if current_usuario.id != @usuario.id%>
+		            	No tiene amigos
+		            <%else%>	
+		                <% if @usuario.amigos.last !=nil%>
+							<%amigos = @usuario.amigos%>
+							<%amigos.each do |a|%>
+						<div class="field">
+							<h3><%= a.amigo.NOMBRE_PHOTOLOG%></h3>
+							<%if a.amigo.fotos.last !=nil%>
+							<div>
+								<%=a.amigo.fotos.last.FECHA%>
+							</div>
+								<%=link_to image_tag(a.amigo.fotos.last.imagen.url(:mini)), a%>
+							<%end%>
+							<%end%>
 						</div>
-							<%=link_to image_tag(a.amigo.fotos.last.imagen.url(:mini)), a%>
+						<%else%>
+							No tienes amigos
 						<%end%>
-						<%end%>
-					</div>
-					<%else%>
-						No tienes amigos
+					<%end%>
+				<%else%>
+					<% if @usuario.amigos.last !=nil%>
+							<%amigos = @usuario.amigos%>
+							<%amigos.each do |a|%>
+						<div class="field">
+							<h3><%= a.amigo.NOMBRE_PHOTOLOG%></h3>
+							<%if a.amigo.fotos.last !=nil%>
+							<div>
+								<%=a.amigo.fotos.last.FECHA%>
+							</div>
+								<%=link_to image_tag(a.amigo.fotos.last.imagen.url(:mini)), a%>
+							<%end%>
+							<%end%>
+						</div>
 					<%end%>
 				<%end%>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             </div>
         </div>
+        <%= link_to 'Volver', root_path %>
     </div>
-<%= link_to 'Volver', root_path %>
