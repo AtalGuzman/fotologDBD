@@ -38,7 +38,7 @@ class ComentariosController < ApplicationController
       @comentario.usuario = Usuario.find(1)
       @comentario.foto =  @foto #Se asocia al comentario la foto
       @comentario.FECHA = Date.current  #Se instala la fecha actiual
-      if @comentario.TEXTO.length < 200
+      if @comentario.TEXTO.length < 1000
           respond_to do |format|
             if @comentario.save
               format.html { redirect_to @comentario.foto, notice: 'El comentario fue creado.' }
