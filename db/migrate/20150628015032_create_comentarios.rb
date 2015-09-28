@@ -3,7 +3,7 @@ class CreateComentarios < ActiveRecord::Migration
     create_table :comentarios do |t|
       t.references :usuario, index: true
       t.references :foto, index: true
-      t.string :TEXTO
+      t.text :TEXTO
       t.date :FECHA
 
       t.timestamps null: false

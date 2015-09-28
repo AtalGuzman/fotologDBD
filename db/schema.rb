@@ -54,6 +54,11 @@ ActiveRecord::Schema.define(version: 20150913041841) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "auditoria", primary_key: "ID_auditoria", force: :cascade do |t|
+    t.string   "DESCRIPCION", limit: 255
+    t.datetime "FECHA"
+  end
+
   create_table "calificacions", force: :cascade do |t|
     t.integer  "usuario_id", limit: 4
     t.integer  "foto_id",    limit: 4
@@ -68,21 +73,21 @@ ActiveRecord::Schema.define(version: 20150913041841) do
   create_table "comentarios", force: :cascade do |t|
     t.integer  "usuario_id", limit: 4
     t.integer  "foto_id",    limit: 4
-    t.string   "TEXTO",      limit: 255
+    t.text     "TEXTO",      limit: 65535
     t.date     "FECHA"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "comentarios", ["foto_id"], name: "index_comentarios_on_foto_id", using: :btree
   add_index "comentarios", ["usuario_id"], name: "index_comentarios_on_usuario_id", using: :btree
 
   create_table "fotos", force: :cascade do |t|
-    t.string   "DESCRIPCION",         limit: 255
+    t.text     "DESCRIPCION",         limit: 65535
     t.date     "FECHA"
     t.string   "TITULO",              limit: 255
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "imagen_file_name",    limit: 255
     t.string   "imagen_content_type", limit: 255
     t.integer  "imagen_file_size",    limit: 4

@@ -1,3 +1,5 @@
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic' rel='stylesheet' type='text/scss'>  <%= stylesheet_link_tag    'fotos-comentario', media: 'all', 'data-turbolinks-track' => true %>
+
 <div id="main-container" class="container">
   <div class="row">
     <h3><em><p class="text-center"><%= @foto.TITULO %></p></em></h3><hr>
@@ -25,36 +27,39 @@
             <%end%>
                 </div>
                     <h3><p class="text-center">Comentarios:</p></h3>
-                    <ul>
-                    <% @foto.comentarios.each do |c|%>
-                    <h4><u><b><%= c.usuario.NOMBRE_PHOTOLOG %></b></u>   
-                        <%if c.usuario.GOLD%>
-                            &#9733;
-                        <%end%>
-                        dice:</h4>
-                    <h5><%= c.TEXTO %></h5>
-                    <h6><%= c.FECHA%>
-                        <%if c.usuario.id == current_usuario.id%>
-                        <%= link_to "Eliminar","/fotos/#{@foto.id}/comentarios/#{c.id}",method: :delete%></h6>
-                        <%end%>
-                    <%end%>
-                    <%= render "comentarios/form"%>
+                        <ul>
+                            <% @foto.comentarios.each do |c|%>
+                            <h4><u><b><%= c.usuario.NOMBRE_PHOTOLOG %></b></u>   
+                                <%if c.usuario.GOLD%>
+                                    &#9733;
+                                <%end%>
+                                dice:</h4>
+                            <p class="centrado"><%= c.TEXTO %></h5>
+                            <h6><%= c.FECHA%>
+                                <%if c.usuario.id == current_usuario.id%>
+                                <%= link_to "Eliminar","/fotos/#{@foto.id}/comentarios/#{c.id}",method: :delete%></h6>
+                                <%end%>
+                            <%end%>
+                        <%= render "comentarios/form"%>
                     </ul>
                 </div>
             </div>
     <%else%>
         <p class="text-center"><h3>Comentarios:</h3></p>
+                <div class="colum-xs-5 column-centered">
                     <ul>
                     <% @foto.comentarios.each do |c|%>
+
                     <h4><u><b><%= c.usuario.NOMBRE_PHOTOLOG %></b></u>   
                         <%if c.usuario.GOLD%>
                             &#9733;
                         <%end%>
                         dice:</h4>
-                    <h5><%= c.TEXTO %></h5>
+                    <p class="centrado"><%= c.TEXTO %></p>
                     <h6><%= c.FECHA%></h6>
                     <%end%>
                     </ul>
+                </div>
     <%= render "comentarios/form"%>
     <%end%>
   <br>

@@ -42,7 +42,7 @@ class FotosController < ApplicationController
   def aux_create
     if foto_params[:DESCRIPCION].length <2000 && foto_params[:TITULO].length<50
         @foto = current_usuario.fotos.new(foto_params)
-        @foto.FECHA = Date.current
+        @foto.FECHA = Date.current 
       
         respond_to do   |format|
           if @foto.save
@@ -55,7 +55,7 @@ class FotosController < ApplicationController
         end 
     else
         redirect_to current_usuario
-        flash[:notice] = "La descripcion no puede tener más de 200 caracteres y el titulo no más de 50."
+        flash[:notice] = "La descripcion no puede tener más de 2000 caracteres y el titulo no más de 50."
     end
   end
 
