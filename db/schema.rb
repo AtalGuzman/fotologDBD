@@ -54,11 +54,6 @@ ActiveRecord::Schema.define(version: 20150913041841) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "auditoria", primary_key: "ID_auditoria", force: :cascade do |t|
-    t.string   "DESCRIPCION", limit: 255
-    t.datetime "FECHA"
-  end
-
   create_table "calificacions", force: :cascade do |t|
     t.integer  "usuario_id", limit: 4
     t.integer  "foto_id",    limit: 4

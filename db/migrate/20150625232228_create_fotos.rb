@@ -1,7 +1,7 @@
 class CreateFotos < ActiveRecord::Migration
   def change
     create_table :fotos do |t|
-      t.string :DESCRIPCION
+      t.text :DESCRIPCION
       t.date :FECHA
       t.string :TITULO
 

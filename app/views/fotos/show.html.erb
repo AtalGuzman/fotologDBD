@@ -3,7 +3,7 @@
 <div id="main-container" class="container">
   <div class="row">
     <h3><em><p class="text-center"><%= @foto.TITULO %></p></em></h3><hr>
-    <em><h5><p class="text-center"><%= @foto.DESCRIPCION %></p></h5></em>
+    <em><h5><p class="text-center centrado"><%= @foto.DESCRIPCION %></p></h5></em>
     <p class="text-center"><%= image_tag @foto.imagen.url(),height: '480', width: '640', class:"img-thumbnail" %></p>
     <%if current_usuario !=nil%>
           <%if current_usuario.id == @foto.usuario_id%>
